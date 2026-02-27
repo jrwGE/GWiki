@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS Good To Knows - Boilers & DHWS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    	<script src="nav.js"></script>
+     <div id="sidebar-container"></div>
+    <main class="main-content">
+        <div class="page-card">
+            <h2>Boiler Sets Setup</h2>
+            <p>Boilers are normally in pairs or more and what you can find is they are staged. Example I want water to 70⁰c I will ask 1 boiler to start and in 2 minutes if it not 70⁰c I will ask the other boiler to start. Then if after another 2 minutes if there is another boiler it will ask this to start too. This can be referred to as lead/lag or duty/standby.</p>
+            <p>What you will find is that once it hits 70⁰c that it will tell boilers to stop.</p>
+
+            <h3>Control and Modulation</h3>
+            <p>Now most boilers are modulating and have the ability to be given a 0-10v signal to control the burn strength. However, most BMS do not get wired up like this unless there is a specific need. Normally the BMS just gives an enable and it leaves the boiler to modulate itself.</p>
+            <p>This causes issue especially if the boilers internal SP is set lower then the BMS max setpoint. This will cause the BMS to ask for 100% demand as it will never reach the setpoint in the BMS software.</p>
+
+            <ul class="content-list">
+                <li>Each boiler in the system has 1 digital output for enable and then 2 or 3 input normally Run and fault but sometime lockout too.</li>
+                <li>Each boiler has a 1 digital and 1 analogue output the digital is the enable and the analogue is the modulation (burn %).</li>
+                <li>The analogue output would be connected to a 2, 3 or 4 RM how these work is there 0-10v fire different relays. Example 4v fires relay 1, 7v fires relay 2, and 10v fires relay 3.</li>
+            </ul>
+            
+            
+
+            <h3>Boiler Operation Continued</h3>
+            <p>Most boilers these days a modulating however a lot of sites don’t wire up a 0-10v for the modulation and just provide an Enabled and rely on the boiler to modulate itself. The run signal would be the best to monitor as while the boiler is enable, the boiler will cycle to its internal setpoint. After a while the boiler will need to stop and do an anti cycle in this moment the boiler is still enabled but not burning.</p>
+            
+            <p>What you normal have is a PID Loop that has a setpoint and it normally looks at the return temperature sometimes the supply. What you will find that the Setpoint can be 70⁰c on the loop and the boiler have an internal setpoint of 65⁰c in this case you would have multi boiler all running as the return temp will never hit SP, as it quickly tells is loop/demand to be 100%.</p>
+
+            <hr>
+
+            <h2>Domestic Hot Water Services (DHWS) & Legionnaires' Disease</h2>
+            <p>On some systems the boilers heat the DHWS as well. You can find the system on 24/7 due to poor water temperature at the boiler cannot get hot enough. Stored hot water must be over 60⁰c for 1 hour before uses for Legionnaires’ for in a DHWS.</p>
+
+            <h3>Hot Water Heaters (HSG274 Part 2 Published 2024)</h3>
+            <p>Hot water heaters are water storage vessels heated by:</p>
+            <ul class="content-list">
+                <li>primary heating circuits of low pressure hot water or steam which is passed through a heat exchanger inside the vessel;</li>
+                <li>gas or oil flame, directly;</li>
+                <li>electricity, normally by means of an electric immersion heater within the vessel; or</li>
+                <li>an external heat exchanger (sometimes returning to a holding ‘buffer’ vessel).</li>
+            </ul>
+
+            <h4>Direct-fired (gas) water heaters</h4>
+            <p>Characteristic of this type of design is heating from below which avoids the reduced temperature areas found in indirect heating calorifiers; they also have lower storage volumes and even temperature distribution. This type of water heater has been shown to have a low incidence of colonisation by legionella.</p>
+            
+            
+
+            <h4>Indirect heating calorifier vessel</h4>
+            <p>In these vessels, the cold water typically enters at the base of the calorifier, creating an area below the coil where the initial blended water temperature may support microbial growth.</p>
+            <ul class="content-list">
+                <li>Stratification, which may occur in large calorifiers, should be avoided and fitting a timer-controlled shunt pump to circulate the water from the top of the calorifier to the base during the period of least demand should be considered.</li>
+                <li>The shunt pump should be activated when demand is at its lowest and the temperature within the calorifier is likely to be highest, this is often during the early hours of the morning.</li>
+                <li>The boiler plant (or other calorifier heat source) should be heating while the shunt pump is active to ensure a temperature of at least 60 °C is achieved throughout the vessel for at least one continuous hour a day.</li>
+            </ul>
+            
+            
+
+            <h3>Legionella Prevention Strategies</h3>
+            <p>However if you heated the stored water to 70⁰c it would kill the Legionnaires’ almost instantly. So instead of running the plant 24/7 you could super heat to 70⁰c for 5 mins and have every on TRV to stop scolding.</p>
+            <p>Or work out how long it take to get to 60⁰c and then run at that for an hour. Then just turn in on that amount of time before people arrived. Example office opens a 9am it takes 45 min to reach 60⁰c the + 1 hour + 15min for just incase so start the plant at 7am.</p>
+
+        </div>
+    </main>
+
+</body>
+</html>

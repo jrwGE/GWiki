@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS Good To Knows - AHU</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ 	<script src="nav.js"></script>
+  <div id="sidebar-container"></div>
+  
+    <main class="main-content">
+        <div class="page-card">
+            <h2>Air Handling Units (AHU)</h2>
+            <p>Some time the AHU will be a packaged unit in the case the BMS will give an Enabled and a setpoint. You will get back lots of different value these will be input form the packed unit or additional sensor that have been added.</p>
+
+            <h3>Dampers</h3>
+            <p>Dampers have end switches these are an open closed signal that tell you in the damper is opened or closed. They break a lot, they also get set up wrong so always take them with a pinch of salt. They are normally controlled by and interlink in the control panel when the fan in enabled and the fan start once they are open.</p>
+            
+            
+
+            <h3>Coils</h3>
+            <p>Frost, Cooling, Heating can by Wet, Electric or Gas. Normal 0-10v.</p>
+            <ul class="content-list">
+                <li>If the off/after sensor of the coil is reading hotter then the intel side and the valve or % is 0 the valve will be LETTING BY (not closing properly).</li>
+                <li>If they are give a % and the temperature changes they are okay Gas and Electric and normal quicker to react the Wet, but they both have tendency to overshoot as they are hard to control.</li>
+                <li>Both gas and electric should never run if the fan is not working.</li>
+            </ul>
+
+            
+
+            <h3>Thermal wheels</h3>
+            <p>Some ahu have thermal wheels that can be used instead of frost coils I have always set them to 20 RPM but some time they are on VDS, I personal do see much point on running any slower or faster then 20 RPM but happy to discuss.</p>
+            
+            
+
+            <h3>Fans (When is a fan running?)</h3>
+            <ul class="content-list">
+                <li>The fan is enabled and the DPS is made (true or 1) or flow sensor has a positive number it is running.</li>
+                <li>The fan is disable and the DPS is made (true or 1) or flow sensor has a positive number it is running.</li>
+                <li>The fan is disable and the DPS is made (true or 1) or flow sensor has a positive number, but the off-coil temperature is really high (close to the feed/flow temperature of the CT) the fan is NOT running.</li>
+                <li>The fan is enabled and the DPS is made (true or 1) or flow sensor has a positive number but the off-coil temperature is really high (close to the feed/flow temperature) the fan is NOT running.</li>
+            </ul>
+        </div>
+    </main>
+
+</body>
+</html>

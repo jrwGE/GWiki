@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS Good To Knows - Sensors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   	<script src="nav.js"></script>
+    <div id="sidebar-container"></div>
+    <main class="main-content">
+        <div class="page-card">
+            <h2>Sensors</h2>
+            <p>In trend mostly and sensors reading under -20⁰c has failed unless it a cold room or freezer (found in labs) and anything over 100⁰c unless it is MTHW (Stream system this is very uncommon these days some factory might need it) it has also failed.</p>
+
+            <h3>Flat line sensor or 0 values </h3>
+            <p>Some of the flat line I have come across:</p>
+            <ul class="content-list">
+                <li>Where a room temp sensor has not change since start like (22⁰c) in FCU.</li>
+                <li>You may find in Trend that they are reading K12 which is Remote Space Temp(the default out of the box is 22⁰c). </li>
+                <li>so these could be a Child units and being controlled by a Parent this will be the case if W34 would be true or some made W34 true be mistake. </li>
+            </ul>
+
+            <p>0 is not a normal reading as a sensor would never read 0 exactly. There are a few thing that will show what it is.</p>
+            <ul class="content-list">
+                <li>If the sensors is a 0-10volt or a 4-20 mA sensors a failed could read 0. We need to see if what the sensor scaling is.</li>
+                <li>0 could also mean that its just not connected in the software or physically </li>
+            </ul>
+        </div>
+    </main>
+
+</body>
+</html>

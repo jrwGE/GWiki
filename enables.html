@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS Good To Knows - Enables</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    	<script src="nav.js"></script>
+     <div id="sidebar-container"></div>
+    <main class="main-content">
+        <div class="page-card">
+            <h2>Understanding Enables</h2>
+            <p>In the BMS the enable is generally just a please run signal to the equipment. Most run hour is just how long has it been enabled for.</p>
+            
+            <ul class="content-list">
+                <li>To get true run time you need a DPS (differential pressure switch) or flow meter/sensor however these are sometime not installed due to cost.</li>
+                <li>Some have current switches, but these just prove that power is being drawn. If the pump or fan is broken it can be drawing power but not moving.</li>
+                <li><strong>Example:</strong> BMS is saying that a pump is enabled but it is off on the panel. The enabled signal will be on in the controller regardless. So you would need to look at some sort DPS/Flow or current switch for the purpose of Virtual Metering.</li>
+            </ul>
+
+            <p>Some DPS/flow and current switch are common across the set; with boilers they don’t normally have DSP/flow and you can only go by the temperature increasing. If DPS are showing flow and the fan or pump is show as disabled the equipment maybe running in Hand/overridden on manually.</p>
+        </div>
+    </main>
+
+</body>
+</html>

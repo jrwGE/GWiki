@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS Good To Knows - Power Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .input-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+        .input-row { display: flex; justify-content: space-between; gap: 15px; }
+        .input-row .input-group { flex: 1; }
+        label { font-weight: 600; margin-bottom: 5px; font-size: 0.9em; color: #555; }
+        input[type="number"] { padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em; }
+        input[type="range"] { width: 100%; margin: 10px 0; }
+        .slider-value { font-weight: bold; color: #3498db; }
+        .results { background: #e8f4f8; padding: 20px; border-radius: 8px; margin-top: 25px; }
+        .results p { margin: 8px 0; font-size: 1.1em; }
+        .results span { font-weight: bold; color: #2c3e50; }
+        .explanation { font-size: 0.85em; color: #666; margin-top: 20px; line-height: 1.5; background: #f9f9f9; padding: 15px; border-left: 4px solid #3498db; }
+    </style>
+</head>
+<body>
+
+   	<script src="nav.js"></script>
+    <div id="sidebar-container"></div> <main class="main-content">
+	
+        <div class="page-card">
+            <h2>Power & Energy Calculator<br>For Fans and Closed loop Pumps</h2>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Nominal Power (kW)</label>
+                    <input type="number" id="nomPower" value="1.0" step="0.1" oninput="calculate()">
+                </div>
+                <div class="input-group">
+                    <label>Rated Frequency (Hz)</label>
+                    <input type="number" id="ratedHz" value="50" step="1" oninput="calculate()">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Min Inverter Hz (at 0.1V)</label>
+                    <input type="number" id="minHz" value="32.0" step="0.1" oninput="calculate()">
+                </div>
+                <div class="input-group">
+                    <label>Max Inverter Hz (at 10V)</label>
+                    <input type="number" id="maxHz" value="45.0" step="0.1" oninput="calculate()">
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Inverter Loss (%)</label>
+                    <input type="number" id="invLoss" value="10.0" step="0.1" oninput="calculate()">
+                </div>
+                <div class="input-group">
+                    </div>
+            </div>
+
+            <div class="input-group">
+                <label>BMS Control Signal: <span class="slider-value" id="voltLabel">5.0 V (50%)</span></label>
+                <input type="range" id="controlVolts" min="0" max="10" step="0.1" value="5" oninput="calculate()">
+            </div>
+
+            <div class="input-group">
+                <label>Hours Run Per Day: <span class="slider-value" id="hoursLabel">24 hours</span></label>
+                <input type="range" id="hoursRun" min="1" max="24" step="1" value="24" oninput="calculate()">
+            </div>
+
+            <div class="results">
+                <p>Current Speed: <span id="outHz">0.00 Hz</span></p>
+                <p>Power Draw: <span id="outKw">0.000 kW</span></p>
+                <p>Daily Usage (Motor): <span id="outDaily">0.00 kWh</span></p>
+                <p style="border-top: 1px solid #ccc; padding-top: 8px; margin-top: 8px;">
+                    <span style="color: #333; font-weight: normal;" id="lossLabelText">Total Plug Draw: </span> <span id="outTotal">0.00 kWh</span>
+                </p>
+            </div>
+
+            <div class="explanation" id="explanationText">
+                </div>
+        </div>
+    </main>
+
+<script>
+    function calculate() {
+        const kW = parseFloat(document.getElementById('nomPower').value) || 0;
+        const ratedHz = parseFloat(document.getElementById('ratedHz').value) || 0;
+        const minHz = parseFloat(document.getElementById('minHz').value) || 0;
+        const maxHz = parseFloat(document.getElementById('maxHz').value) || 0;
+        const invLossPct = parseFloat(document.getElementById('invLoss').value) || 0;
+        const volts = parseFloat(document.getElementById('controlVolts').value) || 0;
+        const hours = parseFloat(document.getElementById('hoursRun').value) || 0;
+
+        const voltsPercent = Math.round((volts / 10) * 100);
+
+        document.getElementById('voltLabel').innerText = volts.toFixed(1) + " V (" + voltsPercent + "%)";
+        document.getElementById('hoursLabel').innerText = hours + " hours";
+
+        let currentHz = 0;
+        if (volts >= 0.1) {
+            const voltRatio = (volts - 0.1) / 9.9;
+            currentHz = minHz + ((maxHz - minHz) * voltRatio);
+        }
+
+        let currentKw = 0;
+        if (ratedHz > 0) {
+            currentKw = kW * Math.pow((currentHz / ratedHz), 3);
+        }
+        
+        let dailyKwh = currentKw * hours;
+        
+        const efficiency = 1 - (invLossPct / 100);
+        let totalKwh = 0;
+        if (efficiency > 0) {
+            totalKwh = dailyKwh / efficiency;
+        }
+
+        document.getElementById('outHz').innerText = currentHz.toFixed(2) + " Hz";
+        document.getElementById('outKw').innerText = currentKw.toFixed(3) + " kW (" + Math.round(currentKw * 1000) + " watts)";
+        document.getElementById('outDaily').innerText = dailyKwh.toFixed(2) + " kWh";
+        
+        document.getElementById('lossLabelText').innerText = "Total Plug Draw (+" + invLossPct + "% Inverter Loss): ";
+        document.getElementById('outTotal').innerText = totalKwh.toFixed(2) + " kWh";
+
+        let statusText = "";
+        if (volts < 0.1) {
+            statusText = "At " + volts + "V (" + voltsPercent + "%), the fan is off.";
+        } else {
+            let percentDraw = 0;
+            if (kW > 0) {
+                percentDraw = Math.round((currentKw / kW) * 100);
+            }
+            
+            statusText = "At " + volts + "V (" + voltsPercent + "%), the inverter scales the frequency between " + minHz + "Hz and " + maxHz + "Hz, resulting in an output of <b>" + currentHz.toFixed(2) + "Hz</b>. ";
+            statusText += "Because fan power relies on the <i>cube</i> of the speed, running a " + ratedHz + "Hz fan at " + currentHz.toFixed(2) + "Hz means it only draws about <b>" + percentDraw + "%</b> of its nominal power.";
+        }
+        document.getElementById('explanationText').innerHTML = statusText;
+    }
+
+    calculate();
+</script>
+
+</body>
+</html>

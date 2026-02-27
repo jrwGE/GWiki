@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS Good To Knows - Frost Protection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  	<script src="nav.js"></script>
+   <div id="sidebar-container"></div> 
+
+   <main class="main-content">
+        <div class="page-card">
+            <h2>Frost Protection</h2>
+            <p>In a Building Management System (BMS), frost protection is an automated control strategy designed to prevent water from freezing within pipework, radiators, and HVAC (Heating, Ventilation and Air Conditioning) equipment.
+			When water inside a heating or cooling coil freezes, it expands. This expansion can rupture pipes or coils, leading to catastrophic water damage and costly equipment failure when the ice thaws. To mitigate this risk,
+ the BMS automatically overrides normal operating schedules during low-temperature conditions to maintain circulation and/or introduce heat where required.</p>
+			
+			
+
+
+
+
+Plant and Space Frost Protection (Software-Based Control)
+Air Handling Unit (AHU) Coil Frost Protection (Hardware-Based Safety)
+
+
+            <p>Frost protection strategies are typically implemented at two levels:<br>Plant and Space Frost Protection (Software-Based Control)<br>
+Air Handling Unit (AHU) Coil Frost Protection (Hardware-Based Safety)</p>
+
+            <h3>1. Plant & Space Frost Protection (Software-Based)</h3>
+            <p>This is a preventative measure driven by the BMS software, usually relying on the Outside Air Temperature (OAT) sensor and internal space sensors.</p>
+            <ul class="content-list">
+                <li><strong>Stage 1 (Circulation):</strong> When the outside temperature drops to a certain point (usually around 2°C to 5°C), the BMS turns on the heating circulating pumps. Moving water is much harder to freeze than standing water.</li>
+                <li><strong>Stage 2 (Active Heating):</strong> If the OAT continues to drop, or if the internal space temperatures fall below a safety threshold (often around 10°C to 12°C), the BMS will automatically turn on the boilers and open the heating valves. This pumps warm water through the building, even if it is the middle of the night and the building is unoccupied.</li>
+            </ul>
+
+            <h3>2. AHU Coil Frost Protection (Hardware-Based)</h3>
+            <p>Air Handling Units (AHUs) constantly pull in fresh outside air. If that air is below freezing, it can instantly freeze the water inside the AHU's heating or cooling coils. Because this can happen incredibly fast, it relies on a hardwired physical safety device called a capillary frost stat.</p>
+            
+            
+
+            <ul class="content-list">
+                <li><strong>The Sensor:</strong> A frost stat features a long, gas-filled copper wire (capillary tube) zigzagged across the entire face of the heating coil. If any 30cm section of this tube detects freezing temperatures (usually set to around 3°C to 5°C), it trips.</li>
+                <li><strong>The Reaction:</strong> This is treated as a critical alarm. The BMS will immediately execute a hard shutdown to protect the unit:
+                    <ul>
+                        <li>Shut down the supply fan: Stops pulling freezing air in from outside.</li>
+                        <li>Close the fresh air damper: Physically blocks outside air from entering the unit.</li>
+                        <li>Open the heating valve to 100%: Flushes the coil with maximum hot water to raise the temperature.</li>
+                        <li>Trigger a BMS Alarm: Alerts the facilities manager that a frost trip has occurred.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Frost stats are often "manual reset" devices. This means an engineer must physically go to the AHU, investigate why it got too cold, and press a button on the stat to clear the fault before the BMS will allow the unit to restart.</p>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS Good To Knows - Time Schedules</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   	<script src="nav.js"></script>
+    <div id="sidebar-container"></div>
+	
+    <main class="main-content">
+        <div class="page-card">
+            <h2>Time Schedules and OSS</h2>
+            
+            <p>If the builds state open hours of 7 til 7 m-f but the plant run out of this range, this may be OSS or that the control TS is not at the same time. As the state time on edge.</p>
+
+            
+
+            <h3>Optimised Start Stop (OSS)</h3>
+            <p>In Trend the default OSS has a warmup is 360 min this is 6 hours. The OSS if the OAT is 15⁰C and the office space is 20⁰C with a SP of 21⁰C the OSS will send a warmup run command to start all the plant connect an amount of time before the time schedule stated time.</p>
+            
+            <p>You can also have cooldown so if the SP is 21⁰C and the space temp is 22⁰C and the OSS has worked out that if the TS turn off at 5pm and that the building stays above 21⁰C for an hour after 5pm the off will ask for the equip turn of an hour before 5pm.</p>
+
+            <h3>Trend Time zone on N4</h3>
+            <p>In N4 you can have master calendar that will write to the trend time zone always worth checking.</p>
+        </div>
+    </main>
+
+</body>
+</html>
