@@ -1,7 +1,12 @@
-// 1. This variable holds the exact HTML for your sidebar
 const sidebarHTML = `
 <nav class="sidebar">
     <h3>BMS Topics</h3>
+    
+    <div class="sidebar-search">
+        <input type="text" id="searchInput" placeholder="Search site...">
+        <div id="searchResults" class="search-results"></div>
+    </div>
+
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="enables.html">Enables</a></li>
@@ -14,26 +19,19 @@ const sidebarHTML = `
         <li><a href="ahu.html">AHU</a></li>
         <li><a href="frost.html">Frost Protection</a></li>
         <li><a href="calculator.html">Power Calculator</a></li>
-		
-	
     </ul>
 </nav>
 `;
 
-// 2. When the page loads, run this function
 document.addEventListener("DOMContentLoaded", function() {
-    
-    // Find the placeholder container and inject the menu HTML
+    // Inject the menu HTML
     document.getElementById("sidebar-container").innerHTML = sidebarHTML;
 
-    // Get the current file name (e.g., "boilers.html")
+    // Highlight the active page
     let currentPage = window.location.pathname.split('/').pop();
-    if (currentPage === '') currentPage = 'index.html'; // Default to home
+    if (currentPage === '') currentPage = 'index.html'; 
 
-    // Find all the links in the newly injected sidebar
     let links = document.querySelectorAll('.sidebar a');
-    
-    // Loop through them. If the link matches the current page, make it 'active'
     links.forEach(link => {
         if (link.getAttribute('href') === currentPage) {
             link.classList.add('active');
