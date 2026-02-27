@@ -16,7 +16,7 @@ const sidebarHTML = `
         <li><a href="frost.html">Frost Protection</a></li>
         <li><a href="calculator.html">Power Calculator</a></li>
         <li><a href="pumps.html">Pump Sets</a></li>
-        <li><a href="Runnig.html">Run or not?</a></li>
+        <li><a href="Running.html">Run or not?</a></li>
         <li><a href="sensors.html">Sensors</a></li>
         <li><a href="schedules.html">Time Schedules</a></li>
         <li><a href="valves.html">Valves</a></li>
@@ -40,4 +40,5 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
 
