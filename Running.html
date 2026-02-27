@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS Good To Knows - Sensors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   	<script src="nav.js"></script>
+    <div id="sidebar-container"></div>
+    <main class="main-content">
+        <div class="page-card"> <h3>Fans (When is a fan running?)</h3>
+            <ul class="content-list">
+                <li>The fan is enabled and the DPS is made (true or 1) or flow sensor has a positive number it is running.</li>
+                <li>The fan is disable and the DPS is made (true or 1) or flow sensor has a positive number it is running.</li>
+                <li>The fan is disable and the DPS is made (true or 1) or flow sensor has a positive number, but the off-coil temperature is really high (close to the feed/flow temperature of the CT) the fan is NOT running.</li>
+                <li>The fan is enabled and the DPS is made (true or 1) or flow sensor has a positive number but the off-coil temperature is really high (close to the feed/flow temperature) the fan is NOT running.</li>
+            </ul>
+
+           </div>
+    </main>
+
+</body>
+</html>
