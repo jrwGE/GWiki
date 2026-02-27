@@ -9,16 +9,18 @@ const sidebarHTML = `
 
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="enables.html">Enables</a></li>
-        <li><a href="vds.html">VDS</a></li>
-        <li><a href="valves.html">Valves</a></li>
-        <li><a href="sensors.html">Sensors</a></li>
-        <li><a href="boilers.html">Boilers & DHWS</a></li>
-        <li><a href="pumps.html">Pump Sets</a></li>
-        <li><a href="schedules.html">Time Schedules</a></li>
         <li><a href="ahu.html">AHU</a></li>
+        <li><a href="boilers.html">Boilers & DHWS</a></li>
+        <li><a href="driver.html">drivers</a></li>
+        <li><a href="enables.html">Enables</a></li>
         <li><a href="frost.html">Frost Protection</a></li>
         <li><a href="calculator.html">Power Calculator</a></li>
+        <li><a href="pumps.html">Pump Sets</a></li>
+        <li><a href="Runnig.html">Run or not?</a></li>
+        <li><a href="sensors.html">Sensors</a></li>
+        <li><a href="schedules.html">Time Schedules</a></li>
+        <li><a href="valves.html">Valves</a></li>
+        <li><a href="vds.html">VDS</a></li>
     </ul>
 </nav>
 `;
@@ -38,3 +40,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
